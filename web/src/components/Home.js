@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import List from './List';
 
 const Home = () => {
   const [repos, setRepos] = useState();
@@ -13,8 +14,18 @@ const Home = () => {
         console.error(error);
       });
   }, []);
-  
-  return <>{repos ? <>{repos[0].id}</> : <>loading</>}</>;
+
+  return (
+    <>
+      {repos ? (
+        <>
+          <List repos={repos} />
+        </>
+      ) : (
+        <>loading</>
+      )}
+    </>
+  );
 };
 
 export default Home;
