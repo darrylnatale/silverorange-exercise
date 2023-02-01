@@ -32,7 +32,7 @@ repos.get('/', async (_, res) => {
   }
   
   const filteredRepos = repositories.filter((repo: Repository) => repo.fork === false);
+  
 
-
-  res.json(filteredRepos);
+  res.status(200).json({status: 200, message: "Repos Found", data: filteredRepos});
 });
