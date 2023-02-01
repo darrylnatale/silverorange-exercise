@@ -11,7 +11,6 @@ const List = ({ repos }) => {
   const uniqueLanguages = [...new Set(repos.map((repo) => repo.language))].map(
     (language) => language
   );
-  console.log(uniqueLanguages);
 
   const filterLanguage = (language) => {
     setFiltered(repos.filter((repo) => repo.language === language));
@@ -19,6 +18,7 @@ const List = ({ repos }) => {
 
   return (
     <>
+      <button onClick={() => setFiltered(repos)}>Show All</button>
       {uniqueLanguages.map((language, index) => {
         return (
           <button key={index} onClick={() => filterLanguage(language)}>
@@ -37,6 +37,7 @@ const List = ({ repos }) => {
               forksCount={repo.forks_count}
               language={repo.language}
               fullName={repo.full_name}
+              commitsUrl={repo.commits_url}
             />
           );
         })
